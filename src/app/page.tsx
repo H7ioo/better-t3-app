@@ -3,9 +3,9 @@ import { HydrateClient } from "@/trpc/server";
 import { Suspense } from "react";
 import { Banner } from "./_components/banner";
 import { CloneTerminal } from "./_components/clone-terminal";
+import { Morphing } from "./_components/morphing";
 import { QuickLinks } from "./_components/quick-links";
 import { SignButton } from "./_components/sign-button/index";
-import { Morphing } from "./_components/morphing";
 
 export const experimental_ppr = true;
 
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <HydrateClient>
       <HexagonBackground
-        className="min-h-screen flex size-full items-center justify-center"
+        className="flex size-full min-h-screen items-center justify-center"
         hexagonSize={65}
         hexagonMargin={2}
       >
