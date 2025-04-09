@@ -5,6 +5,7 @@ import { motion, type MotionProps } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { ShinyButton } from "./shiny-button";
+import type { orms } from "@/app/_components/clone-terminal";
 
 interface AnimatedSpanProps extends MotionProps {
   children: React.ReactNode;
@@ -101,7 +102,7 @@ interface TerminalProps {
   toggleOptions?: {
     options: { label: string; value: string }[];
     value: string;
-    onChange: (value: string) => void;
+    onChange: (value: (typeof orms)[number]) => void;
     activeClassName?: string;
   };
 }
@@ -130,18 +131,23 @@ export const Terminal = ({
           {title && <h3 className="text-sm">{title}</h3>}
           <div className="flex items-center gap-2">
             {toggleOptions && (
-              <div className="flex gap-2 p-1 bg-[#1a1b26]/50 rounded-full mr-2">
+              <div className="mr-2 flex gap-2 rounded-full border bg-[#1a1b26]/50 p-1">
                 {toggleOptions.options.map((option) => (
                   <button
                     key={option.value}
-                    onClick={() => toggleOptions.onChange(option.value)}
+                    onClick={() =>
+                      toggleOptions.onChange(
+                        option.value as (typeof orms)[number],
+                      )
+                    }
                     className={cn(
-                      "px-3 py-1 rounded-full text-xs font-medium transition-all duration-200",
+                      "rounded-full px-3 py-1 text-xs font-medium transition-all duration-200",
                       toggleOptions.value === option.value
-                        ? option.value === "main"
-                          ? "bg-white text-black shadow-lg"
-                          : toggleOptions.activeClassName ?? "bg-[#00875A] text-white shadow-lg"
-                        : "text-gray-400 hover:text-white"
+                        ? option.value === "prisma"
+                          ? "bg-[#197267] text-white shadow-lg"
+                          : (toggleOptions.activeClassName ??
+                            "bg-[#C5F74E] text-black shadow-lg")
+                        : "text-gray-400 hover:text-white",
                     )}
                   >
                     {option.label}
