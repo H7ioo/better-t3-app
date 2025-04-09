@@ -20,7 +20,7 @@ export const CloneTerminal = () => {
       className="h-[275px] w-full max-w-2xl"
       toggleOptions={{
         options: [
-          { label: "Prisma (main)", value: "prisma" },
+          { label: "Prisma", value: "prisma" },
           { label: "Drizzle", value: "drizzle" },
         ],
         value: orm,
