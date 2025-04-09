@@ -8,21 +8,21 @@ import { TRPCReactProvider } from "@/trpc/react";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "T3 Stack with Better Auth | XeeSol.net",
-  description: "A T3 Stack boilerplate with Better Auth integration, featuring Next.js, TypeScript, Tailwind CSS, tRPC, and Prisma for full-stack type-safety",
+  title: "T3 Stack with Better-Auth | xeesol.net",
+  description: "A T3 Stack boilerplate with Better-Auth integration, featuring Next.js, TypeScript, Tailwind CSS, tRPC, and Prisma for full-stack type-safety",
   metadataBase: new URL("https://t3.xeesol.net"),
-  authors: [{ name: "XeeSol.net" }],
+  authors: [{ name: "xeesol.net" }],
   openGraph: {
     type: "website",
     url: "https://t3.xeesol.net",
-    title: "T3 Stack with Better Auth | xeesol",
-    description: "A T3 Stack boilerplate with Better Auth integration, featuring Next.js, TypeScript, Tailwind CSS, tRPC, and Prisma for full-stack type-safety",
-    siteName: "T3 Stack with Better Auth",
+    title: "T3 Stack with Better-Auth | xeesol",
+    description: "A T3 Stack boilerplate with Better-Auth integration, featuring Next.js, TypeScript, Tailwind CSS, tRPC, and Prisma for full-stack type-safety",
+    siteName: "T3 Stack with Better-Auth",
   },
   twitter: {
     card: "summary_large_image",
-    title: "T3 Stack with Better Auth | xeesol",
-    description: "A T3 Stack boilerplate with Better Auth integration, featuring Next.js, TypeScript, Tailwind CSS, tRPC, and Prisma for full-stack type-safety",
+    title: "T3 Stack with Better-Auth | xeesol",
+    description: "A T3 Stack boilerplate with Better-Auth integration, featuring Next.js, TypeScript, Tailwind CSS, tRPC, and Prisma for full-stack type-safety",
   },
   icons: [{ rel: "icon", url: "/favicon.ico" }],
   alternates: {
@@ -48,8 +48,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "T3 Stack with Better Auth",
-              description: "A T3 Stack boilerplate with Better Auth integration",
+              name: "T3 Stack with Better-Auth",
+              description: "A T3 Stack boilerplate with Better-Auth integration",
               url: "https://t3.xeesol.net",
               potentialAction: {
                 "@type": "SearchAction",

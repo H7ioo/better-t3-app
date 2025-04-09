@@ -1,17 +1,17 @@
-# T3 Stack with Better Auth
+# T3 Stack with Better-Auth
 
-This is a modified version of the [T3 Stack](https://create.t3.gg/) project, originally created by [Theo](https://twitter.com/t3dotgg) and bootstrapped with `create-t3-app`. This version replaces NextAuth.js with Better Auth for improved authentication handling.
+This is a modified version of the [T3 Stack](https://create.t3.gg/) project, originally created by [Theo](https://twitter.com/t3dotgg) and bootstrapped with `create-t3-app`. This version replaces NextAuth.js with Better-Auth for improved authentication handling.
 
 ## What's different in this template?
 
-This template builds upon the excellent T3 Stack but replaces NextAuth.js with Better Auth for a more streamlined authentication experience. The rest of the powerful T3 Stack features remain intact.
+This template builds upon the excellent T3 Stack but replaces NextAuth.js with Better-Auth for a more streamlined authentication experience. The rest of the powerful T3 Stack features remain intact.
 
 ## Core Technologies
 
 If you are not familiar with the different technologies used in this project, please refer to the respective docs:
 
 - [Next.js](https://nextjs.org)
-- [Better Auth](https://www.better-auth.com)
+- [Better-Auth](https://www.better-auth.com)
 - [Prisma](https://prisma.io)
 - [Drizzle](https://orm.drizzle.team)
 - [Tailwind CSS](https://tailwindcss.com)
