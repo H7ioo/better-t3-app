@@ -98,6 +98,12 @@ interface TerminalProps {
   className?: string;
   title?: string;
   copyText?: string;
+  toggleOptions?: {
+    options: { label: string; value: string }[];
+    value: string;
+    onChange: (value: string) => void;
+    activeClassName?: string;
+  };
 }
 
 export const Terminal = ({
@@ -105,6 +111,7 @@ export const Terminal = ({
   className,
   title,
   copyText,
+  toggleOptions,
 }: TerminalProps) => {
   return (
     <div
@@ -121,7 +128,29 @@ export const Terminal = ({
             <div className="h-2 w-2 rounded-full bg-green-500"></div>
           </div>
           {title && <h3 className="text-sm">{title}</h3>}
-          {copyText && <CopyButton command={copyText} />}
+          <div className="flex items-center gap-2">
+            {toggleOptions && (
+              <div className="flex gap-2 p-1 bg-[#1a1b26]/50 rounded-full mr-2">
+                {toggleOptions.options.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => toggleOptions.onChange(option.value)}
+                    className={cn(
+                      "px-3 py-1 rounded-full text-xs font-medium transition-all duration-200",
+                      toggleOptions.value === option.value
+                        ? option.value === "main"
+                          ? "bg-white text-black shadow-lg"
+                          : toggleOptions.activeClassName ?? "bg-[#00875A] text-white shadow-lg"
+                        : "text-gray-400 hover:text-white"
+                    )}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
+            {copyText && <CopyButton command={copyText} />}
+          </div>
         </div>
       </div>
       <pre className="p-4">

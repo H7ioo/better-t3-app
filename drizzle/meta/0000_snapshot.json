@@ -1,11 +1,11 @@
 {
-  "id": "449af417-be47-4df6-ae06-d65b23632572",
+  "id": "8ad777fe-4ffe-46ab-baf7-d9a5084ac3bd",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.better-t3-app-drizzle_account": {
-      "name": "better-t3-app-drizzle_account",
+    "public.better-t3-app_account": {
+      "name": "better-t3-app_account",
       "schema": "",
       "columns": {
         "id": {
@@ -106,10 +106,10 @@
         }
       },
       "foreignKeys": {
-        "better-t3-app-drizzle_account_user_id_better-t3-app-drizzle_user_id_fk": {
-          "name": "better-t3-app-drizzle_account_user_id_better-t3-app-drizzle_user_id_fk",
-          "tableFrom": "better-t3-app-drizzle_account",
-          "tableTo": "better-t3-app-drizzle_user",
+        "better-t3-app_account_user_id_better-t3-app_user_id_fk": {
+          "name": "better-t3-app_account_user_id_better-t3-app_user_id_fk",
+          "tableFrom": "better-t3-app_account",
+          "tableTo": "better-t3-app_user",
           "columnsFrom": [
             "user_id"
           ],
@@ -126,8 +126,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.better-t3-app-drizzle_session": {
-      "name": "better-t3-app-drizzle_session",
+    "public.better-t3-app_session": {
+      "name": "better-t3-app_session",
       "schema": "",
       "columns": {
         "id": {
@@ -198,10 +198,10 @@
         }
       },
       "foreignKeys": {
-        "better-t3-app-drizzle_session_user_id_better-t3-app-drizzle_user_id_fk": {
-          "name": "better-t3-app-drizzle_session_user_id_better-t3-app-drizzle_user_id_fk",
-          "tableFrom": "better-t3-app-drizzle_session",
-          "tableTo": "better-t3-app-drizzle_user",
+        "better-t3-app_session_user_id_better-t3-app_user_id_fk": {
+          "name": "better-t3-app_session_user_id_better-t3-app_user_id_fk",
+          "tableFrom": "better-t3-app_session",
+          "tableTo": "better-t3-app_user",
           "columnsFrom": [
             "user_id"
           ],
@@ -214,8 +214,8 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "better-t3-app-drizzle_session_token_unique": {
-          "name": "better-t3-app-drizzle_session_token_unique",
+        "better-t3-app_session_token_unique": {
+          "name": "better-t3-app_session_token_unique",
           "nullsNotDistinct": false,
           "columns": [
             "token"
@@ -226,8 +226,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.better-t3-app-drizzle_user": {
-      "name": "better-t3-app-drizzle_user",
+    "public.better-t3-app_user": {
+      "name": "better-t3-app_user",
       "schema": "",
       "columns": {
         "id": {
@@ -278,8 +278,8 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "better-t3-app-drizzle_user_email_unique": {
-          "name": "better-t3-app-drizzle_user_email_unique",
+        "better-t3-app_user_email_unique": {
+          "name": "better-t3-app_user_email_unique",
           "nullsNotDistinct": false,
           "columns": [
             "email"
@@ -290,8 +290,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.better-t3-app-drizzle_verification": {
-      "name": "better-t3-app-drizzle_verification",
+    "public.better-t3-app_verification": {
+      "name": "better-t3-app_verification",
       "schema": "",
       "columns": {
         "id": {

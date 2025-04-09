@@ -1,16 +1,31 @@
-"use cache";
+"use client";
 
 import { Terminal, TypingAnimation, AnimatedSpan } from "@/components/terminal";
+import { useState } from "react";
 
-export const CloneTerminal = async () => {
+export const CloneTerminal = () => {
+  const [branch, setBranch] = useState<"main" | "drizzle">("main");
+
+  const cloneCommand = branch === "main"
+    ? "git clone https://github.com/iAskShahram/better-t3-app.git"
+    : "git clone -b drizzle --single-branch https://github.com/iAskShahram/better-t3-app.git";
+
   return (
     <Terminal
-      title="Clone Template"
-      copyText="git clone https://github.com/iAskShahram/better-t3-app.git"
+      title={`Clone Template${branch === "drizzle" ? " (drizzle branch)" : ""}`}
+      copyText={cloneCommand}
       className="w-full max-w-2xl"
+      toggleOptions={{
+        options: [
+          { label: "Prisma (main)", value: "main" },
+          { label: "Drizzle", value: "drizzle" }
+        ],
+        value: branch,
+        onChange: (value) => setBranch(value as "main" | "drizzle")
+      }}
     >
       <TypingAnimation duration={25}>
-        &gt; git clone https://github.com/iAskShahram/better-t3-app.git
+        {`> ${cloneCommand}`}
       </TypingAnimation>
 
       <AnimatedSpan delay={1500} className="text-green-500">
@@ -38,7 +53,7 @@ export const CloneTerminal = async () => {
       </AnimatedSpan>
 
       <AnimatedSpan delay={6000} className="text-green-500">
-        ✔ Successfully cloned iAskShahram/better-t3-app
+        ✔ Successfully cloned iAskShahram/better-t3-app{branch === "drizzle" ? " (drizzle branch)" : ""}
       </AnimatedSpan>
     </Terminal>
   );
