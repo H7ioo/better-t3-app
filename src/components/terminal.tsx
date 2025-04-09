@@ -1,9 +1,10 @@
 "use client";
 
+import type { orms } from "@/app/_components/clone-terminal";
 import { cn } from "@/lib/utils";
+import { Check, Copy } from "lucide-react";
 import { motion, type MotionProps } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { Check, Copy } from "lucide-react";
 import { ShinyButton } from "./shiny-button";
 
 interface AnimatedSpanProps extends MotionProps {
@@ -98,6 +99,12 @@ interface TerminalProps {
   className?: string;
   title?: string;
   copyText?: string;
+  toggleOptions?: {
+    options: { label: string; value: string }[];
+    value: string;
+    onChange: (value: (typeof orms)[number]) => void;
+    activeClassName?: string;
+  };
 }
 
 export const Terminal = ({
@@ -105,6 +112,7 @@ export const Terminal = ({
   className,
   title,
   copyText,
+  toggleOptions,
 }: TerminalProps) => {
   return (
     <div
@@ -121,7 +129,34 @@ export const Terminal = ({
             <div className="h-2 w-2 rounded-full bg-green-500"></div>
           </div>
           {title && <h3 className="text-sm">{title}</h3>}
-          {copyText && <CopyButton command={copyText} />}
+          <div className="flex items-center gap-2">
+            {toggleOptions && (
+              <div className="mr-2 flex gap-2 rounded-full border bg-[#1a1b26]/50 p-1">
+                {toggleOptions.options.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() =>
+                      toggleOptions.onChange(
+                        option.value as (typeof orms)[number],
+                      )
+                    }
+                    className={cn(
+                      "rounded-full px-3 py-1 text-xs font-medium transition-all duration-200",
+                      toggleOptions.value === option.value
+                        ? option.value === "prisma"
+                          ? "bg-[#197267] text-white shadow-lg"
+                          : (toggleOptions.activeClassName ??
+                            "bg-[#C5F74E] text-black shadow-lg")
+                        : "text-gray-400 hover:text-white",
+                    )}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
+            {copyText && <CopyButton command={copyText} />}
+          </div>
         </div>
       </div>
       <pre className="p-4">
