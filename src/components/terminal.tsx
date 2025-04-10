@@ -1,9 +1,12 @@
 "use client";
 
 import type { orms } from "@/app/_components/clone-terminal";
+import { POSTHOG_EVENTS } from "@/constants/posthog";
 import { cn } from "@/lib/utils";
+import { useSession } from "@/server/auth/auth-client";
 import { Check, Copy } from "lucide-react";
 import { motion, type MotionProps } from "motion/react";
+import { usePostHog } from "posthog-js/react";
 import { useEffect, useRef, useState } from "react";
 import { ShinyButton } from "./shiny-button";
 
@@ -168,11 +171,22 @@ export const Terminal = ({
 
 const CopyButton = ({ command }: { command: string }) => {
   const [copied, setCopied] = useState(false);
+  const posthog = usePostHog();
+  const { data: session } = useSession();
 
   const copyToClipboard = () => {
     if (navigator?.clipboard?.writeText) {
       void navigator.clipboard.writeText(command);
       setCopied(true);
+
+      if (posthog) {
+        posthog.capture(POSTHOG_EVENTS.GIT_COMMAND_COPIED, {
+          command,
+          orm: command.includes("drizzle") ? "drizzle" : "prisma",
+          userId: session?.user?.id,
+          email: session?.user?.email,
+        });
+      }
     } else {
       // Fallback for older browsers or when Clipboard API is not available
       try {
@@ -187,6 +201,15 @@ const CopyButton = ({ command }: { command: string }) => {
         document.execCommand("copy");
         textArea.remove();
         setCopied(true);
+
+        if (posthog) {
+          posthog.capture(POSTHOG_EVENTS.GIT_COMMAND_COPIED, {
+            command,
+            orm: command.includes("drizzle") ? "drizzle" : "prisma",
+            userId: session?.user?.id,
+            email: session?.user?.email,
+          });
+        }
       } catch (err) {}
     }
     setTimeout(() => setCopied(false), 700);
