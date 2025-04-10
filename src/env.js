@@ -16,6 +16,8 @@ export const env = createEnv({
     BETTER_AUTH_URL: z.string().url(),
     BETTER_AUTH_GOOGLE_ID: z.string(),
     BETTER_AUTH_GOOGLE_SECRET: z.string(),
+
+    NEXT_TELEMETRY_DISABLED: z.string(),
   },
 
   /**
@@ -43,6 +45,8 @@ export const env = createEnv({
     // PostHog
     NEXT_PUBLIC_POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,
     NEXT_PUBLIC_POSTHOG_HOST: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+
+    NEXT_TELEMETRY_DISABLED: process.env.NEXT_TELEMETRY_DISABLED,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
