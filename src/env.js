@@ -17,7 +17,7 @@ export const env = createEnv({
     BETTER_AUTH_GOOGLE_ID: z.string(),
     BETTER_AUTH_GOOGLE_SECRET: z.string(),
 
-    NEXT_TELEMETRY_DISABLED: z.string(),
+    NEXT_TELEMETRY_DISABLED: z.string().default("true"),
   },
 
   /**
